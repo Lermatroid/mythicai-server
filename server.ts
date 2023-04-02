@@ -39,7 +39,7 @@ io.on("connection", (socket) => {
 		const clients = io.sockets.adapter.rooms.get(gameID);
 		const roomSize = clients ? clients.size : 0;
 		if (game && roomSize < 4) {
-			socket.emit("gameJoined", gameID);
+			socket.emit("gameJoined", game.state);
 		} else {
 			socket.emit("gameNotFound", gameID);
 		}
