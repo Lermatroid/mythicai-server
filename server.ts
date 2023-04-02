@@ -172,6 +172,7 @@ io.on("connection", (socket) => {
 		if (data.gameID) {
 			const game = games[data.gameID];
 			if (game) {
+				games[data.gameID].addMessage("Player", data.message, false);
 				const resultingMessage = await games[data.gameID].addOpenAIMessage(data.message);
 				io.to(data.gameID).emit("updatedMessages", games[data.gameID].getMessages());
 			}
