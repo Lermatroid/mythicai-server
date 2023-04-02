@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es2017",
-    "module": "commonjs",
+    "module": "ESNext",
     "lib": ["dom", "es6", "es2017", "esnext.asynciterable"],
     "skipLibCheck": true,
     "sourceMap": true,
@@ -11,7 +11,7 @@
     "noImplicitAny": true,
     "strictNullChecks": true,
     "strictFunctionTypes": true,
-    "noImplicitThis": true,
+    "noImplicitThis": false,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noImplicitReturns": true,
@@ -23,5 +23,10 @@
     "resolveJsonModule": true,
     "baseUrl": "."
   },
+  "ts-node": {
+    // Tell ts-node CLI to install the --loader automatically
+    "esm": true
+},
   "exclude": ["node_modules"],
+  "include": ["./*.ts"]
 }
