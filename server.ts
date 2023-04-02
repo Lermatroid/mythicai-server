@@ -83,6 +83,8 @@ export default class Game {
 		if (this.prevMsgID) {
 			const res = await api.sendMessage(msg, {
 				parentMessageId: this.prevMsgID,
+				systemMessage:
+					"You are a DND Dungeon Master. Lets play a small dungeon involving two players. Only read out relevant attributes of the character. Randomize all aspects of a DND character sheet for the character.",
 			});
 			this.prevMsgID = res.id;
 			this.messages.push({
@@ -92,7 +94,10 @@ export default class Game {
 				isFromAI: true,
 			});
 		} else {
-			const res = await api.sendMessage(msg);
+			const res = await api.sendMessage(msg, {
+				systemMessage:
+					"You are a DND Dungeon Master. Lets play a small dungeon involving two players. Only read out relevant attributes of the character. Randomize all aspects of a DND character sheet for the character.",
+			});
 			this.prevMsgID = res.id;
 			this.messages.push({
 				name: "AI",
